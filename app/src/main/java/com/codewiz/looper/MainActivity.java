@@ -4,8 +4,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.codewiz.looper.auto.Looper;
-import com.codewiz.looper.auto.LooperRunnable;
+import com.codewiz.looper.auto.AutoLooper;
+import com.codewiz.looper.auto.AutoLooperRunnable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,13 +13,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Looper dd = new Looper("dd");
+        AutoLooper dd = new AutoLooper("dd");
         getLifecycle().addObserver(dd);
-        dd.post(new LooperRunnable() {
+        dd.post(new AutoLooperRunnable() {
             @Override
             public void run() {
-                System.out.println("Looping");
+                System.out.println("Looping ");
             }
         });
+
     }
 }
